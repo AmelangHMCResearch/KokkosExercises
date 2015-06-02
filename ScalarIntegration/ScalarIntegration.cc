@@ -248,7 +248,7 @@ int main() {
   Kokkos::initialize();
 
   // ===============================================================
-  // ********************** < do kokkos> *****************************
+  // ********************** < do kokkos> ***************************
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
   printf("performing calculations with kokkos omp\n");

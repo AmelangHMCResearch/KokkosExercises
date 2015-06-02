@@ -51,7 +51,8 @@ public:
 
   string
   getName() const {
-    return string("kokkos");
+    return string("kokkos ") +
+      Utilities::KokkosDeviceNameConverter<DeviceType>().getName();
   }
 
 private:

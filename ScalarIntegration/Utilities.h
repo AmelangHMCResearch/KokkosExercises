@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef DEVICE_RESET_FUNCTIONS_H
-#define DEVICE_RESET_FUNCTIONS_H
+#ifndef UTILITIES_H
+#define UTILITIES_H
 
 #include <cuda_runtime.h>
 
@@ -100,6 +100,27 @@ struct KokkosProcessorTypeConverter<Kokkos::Cuda> {
   static const CpuOrGpuType ProcessorType = Gpu;
 };
 
+template <class DeviceType>
+struct KokkosDeviceNameConverter {
+};
+
+template <>
+struct KokkosDeviceNameConverter<Kokkos::OpenMP> {
+  static
+  string
+  getName() {
+    return string("OpenMP");
+  }
+};
+
+template <>
+struct KokkosDeviceNameConverter<Kokkos::Cuda> {
+  static
+  string
+  getName() {
+    return string("Cuda");
+  }
+};
 }
 
-#endif // DEVICE_RESET_FUNCTIONS_H
+#endif // UTILITIES_H
