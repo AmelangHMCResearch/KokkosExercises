@@ -2,7 +2,7 @@
 #ifndef HISTOGRAM_SERIAL_H
 #define HISTOGRAM_SERIAL_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 class SerialTestFunctor {
 public:

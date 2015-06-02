@@ -2,7 +2,7 @@
 #ifndef HISTOGRAM_KOKKOS_H
 #define HISTOGRAM_KOKKOS_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 template <class DeviceType>
 struct KokkosWorkerFunctor {

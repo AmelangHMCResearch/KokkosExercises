@@ -2,7 +2,7 @@
 #ifndef HISTOGRAM_CUDA_H
 #define HISTOGRAM_CUDA_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 #include <cuda_runtime.h>
 

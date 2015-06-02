@@ -2,7 +2,7 @@
 #ifndef HISTOGRAM_OMP_H
 #define HISTOGRAM_OMP_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 // header files for omp
 #include <omp.h>

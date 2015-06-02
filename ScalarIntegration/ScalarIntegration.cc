@@ -20,6 +20,9 @@ using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::duration_cast;
 
+// header file containing some uninteresting ickies
+#include "../Utilities.h"
+
 // header files for various implementations
 #include "ScalarIntegration_serial.h"
 #include "ScalarIntegration_tbb.h"
@@ -35,6 +38,19 @@ using std::chrono::duration_cast;
 
 // header file so that i can set the number of threads for omp
 #include <omp.h>
+
+void
+checkAnswer(const double correctAnswer,
+            const double testAnswer,
+            const string & testName) {
+  const double relativeError =
+    std::abs(correctAnswer - testAnswer) / std::abs(correctAnswer);
+  if (relativeError > 1e-3) {
+    fprintf(stderr, "%s answer is too far off: %15.8e instead of %15.8e\n",
+            testName.c_str(), testAnswer, correctAnswer);
+    exit(1);
+  }
+}
 
 template <class TestFunctor>
 void
@@ -89,8 +105,7 @@ runTimingTestAndCheckAnswer(const TestFunctor & testFunctor,
                 elapsedTime);
 
   // check the answer
-  Utilities::checkAnswer(correctAnswer, answer,
-                         testFunctor.getName());
+  checkAnswer(correctAnswer, answer, testFunctor.getName());
 }
 
 int main() {

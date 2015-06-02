@@ -2,7 +2,7 @@
 #ifndef SCALARINTEGRATOR_SERIAL_H
 #define SCALARINTEGRATOR_SERIAL_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 class SerialTestFunctor {
 public:

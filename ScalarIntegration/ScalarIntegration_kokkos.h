@@ -2,7 +2,7 @@
 #ifndef SCALARINTEGRATOR_KOKKOS_H
 #define SCALARINTEGRATOR_KOKKOS_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 // header files for kokkos
 #include <Kokkos_Core.hpp>

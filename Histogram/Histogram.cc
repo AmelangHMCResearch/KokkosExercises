@@ -19,6 +19,9 @@ using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::duration_cast;
 
+// header file containing some uninteresting ickies
+#include "../Utilities.h"
+
 // header files for various implementations
 #include "Histogram_serial.h"
 #include "Histogram_tbb.h"
@@ -34,6 +37,27 @@ using std::chrono::duration_cast;
 
 // header file so that i can set the number of threads for omp
 #include <omp.h>
+
+void
+checkAnswer(const vector<unsigned int> & correctAnswer,
+            const vector<unsigned int> & testAnswer,
+            const string & testName) {
+  if (correctAnswer.size() != testAnswer.size()) {
+    fprintf(stderr, "%s answer has the wrong size: %zu instead of %zu\n",
+            testName.c_str(), testAnswer.size(), correctAnswer.size());
+    exit(1);
+  }
+
+  for (unsigned int bucketIndex = 0;
+       bucketIndex < correctAnswer.size(); ++bucketIndex) {
+    if (testAnswer[bucketIndex] != correctAnswer[bucketIndex]) {
+      fprintf(stderr, "%s answer[%u] is wrong: %u instead of %u\n",
+              testName.c_str(), bucketIndex,
+              testAnswer[bucketIndex], correctAnswer[bucketIndex]);
+      exit(1);
+    }
+  }
+}
 
 template <class TestFunctor>
 void
@@ -88,8 +112,7 @@ runTimingTestAndCheckAnswer(const TestFunctor & testFunctor,
                 elapsedTime);
 
   // check the answer
-  Utilities::checkAnswer(correctAnswer, answer,
-                         testFunctor.getName());
+  checkAnswer(correctAnswer, answer, testFunctor.getName());
 }
 
 int main() {

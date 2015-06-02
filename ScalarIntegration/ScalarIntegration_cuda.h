@@ -2,7 +2,7 @@
 #ifndef SCALARINTEGRATOR_CUDA_H
 #define SCALARINTEGRATOR_CUDA_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 #include <cuda_runtime.h>
 

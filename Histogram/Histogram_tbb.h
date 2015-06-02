@@ -2,7 +2,7 @@
 #ifndef HISTOGRAM_TBB_H
 #define HISTOGRAM_TBB_H
 
-#include "Utilities.h"
+#include "../Utilities.h"
 
 // header files for tbb
 #include <tbb/blocked_range.h>

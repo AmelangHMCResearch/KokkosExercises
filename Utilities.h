@@ -73,19 +73,6 @@ resetProcessorForTiming(const CpuOrGpuType processorType) {
   }
 }
 
-void
-checkAnswer(const double correctAnswer,
-            const double testAnswer,
-            const string & testName) {
-  const double relativeError =
-    std::abs(correctAnswer - testAnswer) / std::abs(correctAnswer);
-  if (relativeError > 1e-3) {
-    fprintf(stderr, "%s answer is too far off: %15.8e instead of %15.8e\n",
-            testName.c_str(), testAnswer, correctAnswer);
-    exit(1);
-  }
-}
-
 template <class DeviceType>
 struct KokkosProcessorTypeConverter {
 };
@@ -121,6 +108,7 @@ struct KokkosDeviceNameConverter<Kokkos::Cuda> {
     return string("Cuda");
   }
 };
+
 }
 
 #endif // UTILITIES_H
