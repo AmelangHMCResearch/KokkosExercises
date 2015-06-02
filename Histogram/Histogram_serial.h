@@ -20,6 +20,8 @@ public:
   computeAnswer(vector<unsigned int> * answer) const {
 
     vector<unsigned int> & histogram = *answer;
+    histogram.resize(_numberOfBuckets);
+    std::fill(histogram.begin(), histogram.end(), 0);
 
     const unsigned int numberOfElements = _input.size();
     const unsigned int bucketSize = numberOfElements / _numberOfBuckets;
